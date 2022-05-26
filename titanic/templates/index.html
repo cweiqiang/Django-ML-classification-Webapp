@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Titanic Survival Predictor</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+  </head>
+  <body>
+    <h1> Home Page</h1>
+
+    <button onclick="buttonFunc()">Click here to change background color </button>
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+
+    <h3>Get your titanic prediction here below! </h3>
+    <p> This prediction is based on training a model from the <a href="https://www.kaggle.com/competitions/titanic/data"> Titanic training dataset </a> </p>
+    <p> <img src="{% static 'istockphoto-titanic.jpg' %}"> </p> 
+    <p>Enter in the age of a made up person on the titanic voyage.</p>
+    <p>We will output a prediction on his/her liklihood of survival!  </p>
+    <form  action="{% url 'result' %}">
+      {% csrf_token %}
+      <p>Pclass [Passenger Class: Key in an integer, where 1='1st', 2='2nd', 3='3rd']</p>
+      <input type="text" name="pclass">
+      <p>Sex [Gender: Key in an integer, where 0='Male', 1='Female']</p>
+      <input type="text" name="sex">
+      <p>Age [Age: Enter a positive number, e.g. 1-100]</p>
+      <input type="text" name="age">
+      <p>Sibsp [Number of Siblings and Spouses onboard: Key in a non-negative integer]</p>
+      <input type="text" name="sibsp">
+      <p>Parents/children [Number of parents and children onboard: Key in a non-negative integer]</p>
+      <input type="text" name="parch">
+      <p>Fare [Fare paid by passenger: Key in a positive number]</p>
+      <input type="text" name="fare">
+      <p>Embarked [Port of Embarkation: Key in an integer where, 0='Southampton', 1='Cherbourg', 2='Queenstown']</p>
+      <input type="text" name="embarked">
+      <p>Title [Title of passenger: Key in an integer, where (0,1,2,3,4,5,6,7)=('Mr','Miss','Mrs','Master','Dr','Rev','Officer','Royalty') ]</p>
+      <input type="text" name="title">
+      <input type="submit">
+    </form>
+  </body>
+</html>
